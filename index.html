@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>No Bullets Til They're Beautiful</title>
 
     <style>
@@ -20,37 +19,15 @@
             background: black;
         }
 
-        /* FULLSCREEN IMAGE CONTAINER */
-        .bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
-        /* IMAGE FIT CONTROL */
-        .bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* fills screen perfectly */
-            object-position: center; /* keeps focus centered */
-        }
-
-        /* OPTIONAL: clean overlay (helps image look better) */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.15); /* subtle dark layer */
-            z-index: 0;
-        }
-
-        /* hidden SEO text */
-        .seo {
+        .seo-text {
             position: absolute;
             left: -9999px;
         }
@@ -59,13 +36,9 @@
 
 <body>
 
-    <div class="bg">
-        <img src="images/band_website.png" style="width:300px;"> alt="No Bullets Til They're Beautiful">
-    </div>
+    <img src="images/band_website.png" alt="Background">
 
-    <div class="overlay"></div>
-
-    <div class="seo">
+    <div class="seo-text">
         No Bullets Til They're Beautiful
         Cole Bosau
         Miles Bosau
