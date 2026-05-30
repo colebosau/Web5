@@ -10,11 +10,11 @@
 html, body {
     margin: 0;
     height: 100%;
-    background: black;
     overflow: hidden;
+    background: black;
 }
 
-/* FULL SCREEN DRAG VIEWER */
+/* VIEWPORT */
 .viewer {
     width: 100vw;
     height: 100vh;
@@ -22,25 +22,27 @@ html, body {
     cursor: grab;
 }
 
-/* KEY FIX:
-   guarantees FULL IMAGE always visible */
+/* IMAGE (FIXED) */
 .viewer img {
     display: block;
 
-    /* NO CROPPING EVER */
-    max-width: 100vw;
-    max-height: 100vh;
+    /* KEY FIX:
+       ensures FULL IMAGE is always visible */
+    max-width: none;
+    max-height: none;
 
     width: auto;
     height: auto;
-
-    margin: auto;
 }
 
-/* hidden SEO */
+/* HIDDEN SEO TEXT */
 .seo {
     position: absolute;
     left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 </style>
 </head>
@@ -48,9 +50,10 @@ html, body {
 <body>
 
 <div class="viewer" id="viewer">
-    <img src="images/band_website.png" alt="Artwork">
+    <img src="images/band_website.png" alt="No Bullets Til They're Beautiful artwork">
 </div>
 
+<!-- hidden SEO names -->
 <div class="seo">
     No Bullets Til They're Beautiful
     Cole Bosau
@@ -92,8 +95,11 @@ viewer.addEventListener("mousemove", (e) => {
     const x = e.pageX;
     const y = e.pageY;
 
-    viewer.scrollLeft = scrollLeft - (x - startX);
-    viewer.scrollTop = scrollTop - (y - startY);
+    const walkX = x - startX;
+    const walkY = y - startY;
+
+    viewer.scrollLeft = scrollLeft - walkX;
+    viewer.scrollTop = scrollTop - walkY;
 });
 </script>
 
