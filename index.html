@@ -1,49 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>No Bullets Til They're Beautiful</title>
+<title>No Bullets Til They're Beautiful</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: black;
-        }
+html, body {
+    height: 100%;
+    background: black;
 
-        img {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
+    /* allows left/right movement */
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 
-        .seo-text {
-            position: absolute;
-            left: -9999px;
-        }
-    </style>
+/* image container */
+.wrapper {
+    height: 100vh;
+    display: inline-block;
+}
+
+/* full image, no cropping */
+img {
+    height: 100vh;
+    width: auto;
+    display: block;
+}
+
+/* hidden SEO text */
+.seo {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+</style>
 </head>
 
 <body>
 
-    <img src="images/band_website.png" alt="Background Image">
+<div class="wrapper">
+    <img src="images/band_website.png" alt="No Bullets Til They're Beautiful artwork">
+</div>
 
-    <div class="seo-text">
-        No Bullets Til They're Beautiful
-        Cole Bosau
-        Miles Bosau
-    </div>
+<!-- hidden names for SEO -->
+<div class="seo">
+    No Bullets Til They're Beautiful
+    Cole Bosau
+    Miles Bosau
+</div>
 
 </body>
 </html>
