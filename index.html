@@ -14,30 +14,30 @@ html, body {
     overflow: hidden;
 }
 
-/* scrollable viewport */
+/* FULL SCREEN DRAG VIEWER */
 .viewer {
     width: 100vw;
     height: 100vh;
     overflow: auto;
     cursor: grab;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* KEY FIX: contain behavior (NO CROPPING EVER) */
+/* KEY FIX:
+   guarantees FULL IMAGE always visible */
 .viewer img {
+    display: block;
+
+    /* NO CROPPING EVER */
     max-width: 100vw;
     max-height: 100vh;
 
     width: auto;
     height: auto;
 
-    display: block;
+    margin: auto;
 }
 
-/* hidden SEO text */
+/* hidden SEO */
 .seo {
     position: absolute;
     left: -9999px;
