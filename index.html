@@ -7,57 +7,95 @@
 <title>No Bullets Til They're Beautiful</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 html, body {
-    width: 100%;
+    margin: 0;
     height: 100%;
+    overflow: hidden;
     background: black;
+}
 
-    /* allows scroll if needed */
+/* VIEWPORT */
+.viewer {
+    width: 100vw;
+    height: 100vh;
     overflow: auto;
+    cursor: grab;
 }
 
-/* center wrapper BUT does NOT crop */
-.wrapper {
-    width: 100%;
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* CRITICAL FIX:
-   image scales to fit inside screen */
-img {
-    max-width: 100vw;   /* never exceed screen width */
-    max-height: 100vh;  /* never exceed screen height */
-
+/* IMAGE */
+.viewer img {
+    height: 100vh;
     width: auto;
-    height: auto;
-
     display: block;
+}
+
+/* HIDDEN SEO TEXT */
+.seo {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-    <img src="images/band_website.png" alt="Artwork">
+<div class="viewer" id="viewer">
+    <img src="images/band_website.png" alt="No Bullets Til They're Beautiful artwork">
 </div>
 
-<!-- hidden SEO text -->
-<div style="position:absolute;left:-9999px;">
+<!-- hidden SEO names -->
+<div class="seo">
     No Bullets Til They're Beautiful
     Cole Bosau
     Miles Bosau
 </div>
+
+<script>
+const viewer = document.getElementById("viewer");
+
+let isDown = false;
+let startX, startY;
+let scrollLeft, scrollTop;
+
+viewer.addEventListener("mousedown", (e) => {
+    isDown = true;
+    viewer.style.cursor = "grabbing";
+
+    startX = e.pageX;
+    startY = e.pageY;
+
+    scrollLeft = viewer.scrollLeft;
+    scrollTop = viewer.scrollTop;
+});
+
+viewer.addEventListener("mouseup", () => {
+    isDown = false;
+    viewer.style.cursor = "grab";
+});
+
+viewer.addEventListener("mouseleave", () => {
+    isDown = false;
+});
+
+viewer.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+
+    e.preventDefault();
+
+    const x = e.pageX;
+    const y = e.pageY;
+
+    const walkX = x - startX;
+    const walkY = y - startY;
+
+    viewer.scrollLeft = scrollLeft - walkX;
+    viewer.scrollTop = scrollTop - walkY;
+});
+</script>
 
 </body>
 </html>
