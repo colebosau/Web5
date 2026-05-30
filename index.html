@@ -14,24 +14,34 @@
 }
 
 html, body {
-    height: 100%;
     background: black;
 
-    /* allows left/right movement */
-    overflow-x: auto;
-    overflow-y: hidden;
+    /* allow full movement */
+    width: 100%;
+    height: 100%;
+
+    overflow: auto;
 }
 
-/* image container */
+/* center the image block */
 .wrapper {
-    height: 100vh;
-    display: inline-block;
+    min-height: 100vh;
+    min-width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* full image, no cropping */
+/* key: keeps full image, no crop */
 img {
-    height: 100vh;
+    height: auto;
     width: auto;
+
+    /* ensures it scales nicely */
+    max-height: none;
+    max-width: none;
+
     display: block;
 }
 
@@ -39,10 +49,6 @@ img {
 .seo {
     position: absolute;
     left: -9999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
 }
 </style>
 </head>
@@ -50,10 +56,9 @@ img {
 <body>
 
 <div class="wrapper">
-    <img src="images/band_website.png" alt="No Bullets Til They're Beautiful artwork">
+    <img src="images/band_website.png" alt="No Bullets Til They're Beautiful">
 </div>
 
-<!-- hidden names for SEO -->
 <div class="seo">
     No Bullets Til They're Beautiful
     Cole Bosau
